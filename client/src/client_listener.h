@@ -2,24 +2,21 @@
 // Created by lixiaoqing on 2021/5/27.
 //
 
-#ifndef COMMUNICATION_CLIENTLISTENER_H
-#define COMMUNICATION_CLIENTLISTENER_H
-
+#ifndef CLIENT_CLIENT_LISTENER_H
+#define CLIENT_CLIENT_LISTENER_H
 
 #include "hpsocket/HPSocket.h"
-
 
 /**
  * Socket 事件监听器。定义一些事件的处理方法
  */
 class ClientListener final : public CTcpClientListener {
-
 public:
-
-    ClientListener();
+    ClientListener() = default;
 
     ~ClientListener() override;
 
+public:
     /**
      * 名称：准备连接通知
      * 描述：通信客户端组件启动时，在客户端 Socket 创建完成并开始执行连接前，Socket 监听器将收到该通知，
@@ -95,9 +92,9 @@ public:
      * @param iErrorCode  错误代码
      * @return
      */
-    EnHandleResult OnClose(ITcpClient *pSender, CONNID dwConnID, EnSocketOperation enOperation, int iErrorCode) override;
-
+    EnHandleResult
+    OnClose(ITcpClient *pSender, CONNID dwConnID, EnSocketOperation enOperation, int iErrorCode) override;
 };
 
 
-#endif //COMMUNICATION_CLIENTLISTENER_H
+#endif //CLIENT_CLIENT_LISTENER_H

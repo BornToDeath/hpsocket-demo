@@ -2,25 +2,24 @@
 // Created by lixiaoqing on 2021/7/17.
 //
 
+#include "server_listener.h"
 
-#include "ServerListener.h"
-#include "Log.h"
+#include "log.h"
 
 #define TAG "ServerListener"
 
-
 EnHandleResult ServerListener::OnPrepareListen(ITcpServer *pSender, SOCKET soListen) {
-    Log::info(TAG, "OnPrepareListen");
+    Log::Info(TAG, "OnPrepareListen");
     return HR_OK;
 }
 
 EnHandleResult ServerListener::OnAccept(ITcpServer *pSender, CONNID dwConnID, UINT_PTR soClient) {
-    Log::info(TAG, "收到 TCP 连接: %lld", dwConnID);
+    Log::Info(TAG, "收到 TCP 连接: %lld", dwConnID);
     return HR_OK;
 }
 
 EnHandleResult ServerListener::OnHandShake(ITcpServer *pSender, CONNID dwConnID) {
-    Log::info(TAG, "OnHandShake：%d", dwConnID);
+    Log::Info(TAG, "OnHandShake：%d", dwConnID);
     return HR_OK;
 }
 
@@ -29,17 +28,17 @@ EnHandleResult ServerListener::OnReceive(ITcpServer *pSender, CONNID dwConnID, c
 }
 
 EnHandleResult ServerListener::OnSend(ITcpServer *pSender, CONNID dwConnID, const BYTE *pData, int iLength) {
-    Log::info(TAG, "OnSend：%d, length:%d", dwConnID, iLength);
+    Log::Info(TAG, "OnSend：%d, length:%d", dwConnID, iLength);
     return HR_OK;
 }
 
 EnHandleResult
 ServerListener::OnClose(ITcpServer *pSender, CONNID dwConnID, EnSocketOperation enOperation, int iErrorCode) {
-    Log::info(TAG, "OnClose:%d", dwConnID);
+    Log::Info(TAG, "OnClose:%d", dwConnID);
     return HR_OK;
 }
 
 EnHandleResult ServerListener::OnShutdown(ITcpServer *pSender) {
-    Log::info(TAG, "OnShutdown");
+    Log::Info(TAG, "OnShutdown");
     return HR_OK;
 }
